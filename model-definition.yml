@@ -1,0 +1,33 @@
+kind: Model
+api_version: v1beta1
+metadata:
+  display_name: ToolSet:MasterMap UDM Layers
+  name: toolset-mastermap-udm-layers
+  summary: A utility tool for generating the mastermap udm layer outputs from developed polygons
+  publisher: Newcastle University
+  source_code: https://github.com/geospatialncl/udm-mastermap-layers
+  description: >
+    Generate UDM input layers from OS MasterMap using an existing geopackage file of developed area polygons.
+spec:
+  inputs:
+    parameters:
+      - name: region
+        title: region
+        description: The name of the region. Used for naming the output file
+        type: string
+        required: true
+        default: 'None'
+
+    dataslots:
+      - name: Developed area geopackage
+        description: Geopackage file of developed polygons from OS MasterMap
+        path: inputs/
+        required: true
+        default:
+          - 86e482b0-ea52-45db-bc17-b1f7ac99f5e4
+
+  outputs:
+    datasets:
+      - name: outputs/final/*.gpkg
+        type: folder
+        description: geopackage outputs
